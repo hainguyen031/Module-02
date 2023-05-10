@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Module 02.iml" filepath="$PROJECT_DIR$/.idea/Module 02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson-01-Introduction-to-Java/Operator/Operator.iml" filepath="$PROJECT_DIR$/Lesson-01-Introduction-to-Java/Operator/Operator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson-01-Introduction-to-Java/System/System.iml" filepath="$PROJECT_DIR$/Lesson-01-Introduction-to-Java/System/System.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson-01-Introduction-to-Java/day-of-month/day-of-month.iml" filepath="$PROJECT_DIR$/Lesson-01-Introduction-to-Java/day-of-month/day-of-month.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson-01-Introduction-to-Java/liner-equation-resolver/liner-equation-resolver.iml" filepath="$PROJECT_DIR$/Lesson-01-Introduction-to-Java/liner-equation-resolver/liner-equation-resolver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson-01-Introduction-to-Java/variable/variable.iml" filepath="$PROJECT_DIR$/Lesson-01-Introduction-to-Java/variable/variable.iml" />
+    </modules>
+  </component>
+</project>
