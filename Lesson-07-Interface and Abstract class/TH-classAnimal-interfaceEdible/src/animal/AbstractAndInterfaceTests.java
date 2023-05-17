@@ -6,6 +6,9 @@ import edible.Edible;
 import fruit.Fruit;
 import fruit.Orange;
 import fruit.Apple;
+
+import javax.sound.midi.Soundbank;
+
 public class AbstractAndInterfaceTests {
     public static void main(String[] args) {
         Animal[] animals = new Animal[2];
@@ -20,6 +23,7 @@ public class AbstractAndInterfaceTests {
             }
 
         }
+        System.out.println();
         Fruit[] fruits = new Fruit[2];
         fruits[0] = new Orange();
         fruits[1] = new Apple();
