@@ -39,7 +39,7 @@ public class Category {
         for (Product product : products) {
             System.out.println(product.getId() +". "+ product.getName() +" - "+ product.getPrice());
         }
-        System.out.println();
+        System.out.println("---------------------");
         return products;
     }
 

@@ -56,8 +56,8 @@ public class CartLine {
         return subTotal;
     }
 
-    public void setSubTotal(Product product, int quantity) {
-        this.subTotal = product.getPrice() * quantity;
+    public void setSubTotal(Product product) {
+        this.subTotal = product.getPrice() * product.getQuantity();
     }
 
     public int getQuantity() {
@@ -79,27 +79,45 @@ public class CartLine {
     @Override
     public String toString() {
         return "CartLine{" +
-                "product_id=" + product_id +
-                ", cart_id=" + cart_id +
-                ", subTotal=" + subTotal +
-                ", quantity=" + quantity +
+                "product_id=" + this.product_id +
+                ", cart_id=" + this.cart_id +
+                ", subTotal=" + this.subTotal +
+                ", quantity=" + this.quantity +
                 '}';
     }
     public void getAll() {
         System.out.println("Gio hang:");
         int count = 1;
         String text;
+        long total = 0;
         while (count <= products.size()) {
             text = "Stt: "+count+ ", " +
                     "san pham: " +products.get(count - 1).getName()+ ", " +
-                    "gia: " + products.get(count - 1).getPrice() * this.quantity+ ", " +
-                    "so luong: " +this.quantity;
+                    "gia: " + products.get(count - 1).getPrice() * products.get(count - 1).getQuantity()+ " VND, " +
+                    "so luong: " + products.get(count - 1).getQuantity();
+            total += products.get(count - 1).getPrice() * products.get(count - 1).getQuantity();
             System.out.println(text);
             count++;
         }
+        System.out.println("Tong tien gio hang: " + total +" VND");
+        System.out.println("---------------------");
+    }
+    public void updateCartLine(int quantityChange) {
+        this.quantity = quantityChange;
+        this.subTotal = this.product.getPrice() * quantityChange;
+    }
+    public void resertCartLine() {
+        this.product_id = 0;
+        this.product = new Product(0, "name", 0);
+        this.quantity = 0;
+        this.subTotal = 0;
+    }
+    public void removeCartLine(String name) {
+
     }
 
-    public void removeCartLine(int index) {
+    public void addProduct(Product selectedProduct) {
+        products.add(selectedProduct);
 
     }
 }

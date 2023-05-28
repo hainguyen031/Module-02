@@ -6,18 +6,21 @@ public class Product {
     private int id;
     private String name;
     private long price;
-private ArrayList<Product> products;
+    private int quantity;
+    private ArrayList<Product> products;
     public Product() {
         products = new ArrayList<Product>();
         this.id = 0;
         this.name = "name";
         this.price = 0;
+        this.quantity = 0;
     }
 
     public Product(int id, String name, long price) {
         this.id = id;
         this.name = name;
         this.price = price;
+        this.quantity = 0;
     }
 
     public int getId() {
@@ -44,6 +47,13 @@ private ArrayList<Product> products;
         this.price = price;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
     public void getAll() {
         int count = 1;

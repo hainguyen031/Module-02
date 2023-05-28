@@ -15,25 +15,27 @@ public class Main {
 
         //bat dau chuong trinh
         while (true) {
-
-            System.out.println("1. Danh muc san pham");
-            System.out.println("2. Xem gio hang");
-            System.out.println("3. Thanh toan");
-            System.out.println("4. Thoat");
+            System.out.println("1. Category");
+            System.out.println("2. Show Cart");
+            System.out.println("3. Edit Cart");
+            System.out.println("4. Buy");
+            System.out.println("5. Exit");
+            System.out.println("---------------------");
             int choice = choosingOption();
             switch (choice) {
                 case 1:
-                    showCategoryList();
-                    choiceCategory();
+                    showCategoryList(); //hien category
+                    choiceCategory(); // chon category
                     break;
                 case 2:
-                    showCart();
                     cartLine.getAll(); //hien gio hang voi tong san pham va tien
-                    editCart();
                     break;
                 case 3:
-                    System.out.println("chua xong");
-                    //buy();
+                    System.out.println("sua gio hang"); //chua xong
+                    editCart();
+                    break;
+                case 4:
+                    System.out.println("thanh toan");
                     break;
                 default:
                     return;
@@ -42,56 +44,21 @@ public class Main {
         }
     }
 
-    private static void showCart() {
-        cart.setId(1);
-        cartLine.getAll();
-        totalCart();
-    }
-
-    private static void totalCart() {
-        long sum = 0;
-        for (CartLine cartLine1: cartLine) {
-
-        }
-    }
-
     private static void editCart() {
         while (true) {
-            System.out.println("1. Sua don hang");
-            System.out.println("2. Tro lai");
+            System.out.println("1. Delete product");
+            System.out.println("2. Exit");
             int choice = choosingOption();
             if(choice == 2) {
                 break;
             } else {
-                System.out.println("1. Xoa san pham: ");
-                System.out.println("2. Sua so luong san pham: ");
-                int choice1 = scanner.nextInt();
-                switch (choice1) {
-                    case 1:
-                        removeFromCart();
-                        break;
-                    case 2:
-                        System.out.println("chua xong");
-                        //editQuantityFromCart();
-                        break;
-                }
+                System.out.print("Enter name product delete: ");
+                String choice1 = scanner.nextLine();
+                cartLine.removeCartLine(choice1);
             }
         }
     }
 
-    private static void removeFromCart() {
-        while (true) {
-            cartLine.getAll();
-            System.out.println("Chon san ten san pham muon xoa:");
-            System.out.println("Press 0 to exit");
-            int choice = choosingOption();
-            if (choice == 0) {
-                break;
-            } else {
-                cartLine.removeCartLine(choice - 1);
-            }
-        }
-    }
 
     private static int choosingOption() {
         System.out.print("Choose your option: ");
@@ -101,6 +68,7 @@ public class Main {
     private static void choiceCategory() {
         System.out.print("Chon danh muc: ");
         int choice = scanner.nextInt();
+        System.out.println("---------------------");
         switch (choice) {
             case 1:
                 category1.getProducts();
@@ -124,31 +92,79 @@ public class Main {
         int choiceProductId = scanner.nextInt();
         System.out.print("So luong: ");
         int choiceQuantity = scanner.nextInt();
-        cartLine.addProductById(choiceProductId, products1);
-        cartLine.setQuantity(choiceQuantity);
-        cartLine.getAll();
+        Product selectedProduct = getProductById1(choiceProductId); // Lấy sản phẩm theo ID
+        if (selectedProduct != null) {
+            selectedProduct.setQuantity(choiceQuantity);
+            cartLine.addProduct(selectedProduct); // Thêm sản phẩm vào CartLine
+            cart.getCartLines().add(cartLine); // Thêm CartLine vào Cart
+            System.out.println("San pham da duoc them vao gio hang!");
+            System.out.println("---------------------");
+        } else {
+            System.out.println("Khong tim thay san pham!");
+            System.out.println("---------------------");
+        }
     }
+
+    private static Product getProductById1(int choiceProductId) {
+        for (Product product : products1) {
+            if(product.getId()==choiceProductId) {
+                return product;
+            }
+        }
+        return null;
+    }
+
     private static void addProductToCart2() {
         System.out.print("Chon san pham muon mua:");
         int choiceProductId = scanner.nextInt();
         System.out.print("So luong: ");
         int choiceQuantity = scanner.nextInt();
-        cartLine.addProductById(choiceProductId, products2);
-        cartLine.setQuantity(choiceQuantity);
-        cartLine.getAll();
+        Product selectedProduct = getProductById2(choiceProductId); // Lấy sản phẩm theo ID
+        if (selectedProduct != null) {
+            selectedProduct.setQuantity(choiceQuantity);
+            cartLine.addProduct(selectedProduct); // Thêm sản phẩm vào CartLine
+            cart.getCartLines().add(cartLine); // Thêm CartLine vào Cart
+            System.out.println("San pham da duoc them vao gio hang!");
+            System.out.println("---------------------");
+        } else {
+            System.out.println("Khong tim thay san pham!");
+            System.out.println("---------------------");
+        }
+    }
+    private static Product getProductById2(int choiceProductId) {
+        for (Product product : products2) {
+            if(product.getId()==choiceProductId) {
+                return product;
+            }
+        }
+        return null;
     }
     private static void addProductToCart3() {
         System.out.print("Chon san pham muon mua:");
         int choiceProductId = scanner.nextInt();
         System.out.print("So luong: ");
         int choiceQuantity = scanner.nextInt();
-        cartLine.addProductById(choiceProductId, products3);
-        cartLine.setQuantity(choiceQuantity);
-        cartLine.getAll();
+        Product selectedProduct = getProductById3(choiceProductId); // Lấy sản phẩm theo ID
+        if (selectedProduct != null) {
+            selectedProduct.setQuantity(choiceQuantity);
+            cartLine.addProduct(selectedProduct); // Thêm sản phẩm vào CartLine
+            cart.getCartLines().add(cartLine); // Thêm CartLine vào Cart
+            System.out.println("San pham da duoc them vao gio hang!");
+            System.out.println("---------------------");
+        } else {
+            System.out.println("Khong tim thay san pham!");
+            System.out.println("---------------------");
+        }
     }
-
+    private static Product getProductById3(int choiceProductId) {
+        for (Product product : products3) {
+            if(product.getId()==choiceProductId) {
+                return product;
+            }
+        }
+        return null;
+    }
     public static int id = 0;
-
     public static Scanner scanner = new Scanner(System.in);
     public static UserService userService = new UserServiceImpl();
     public static ArrayList<Product> products1 = productArrayList1();
@@ -164,9 +180,9 @@ public class Main {
 
 
     public static void showCategoryList() {
-        System.out.println("Danh muc san pham:");
+        System.out.println("List category:");
         categoryList.getAll();
-        System.out.println();
+        System.out.println("---------------------");
     }
     public static ArrayList<Product> productArrayList1() {
         ArrayList<Product> products = new ArrayList<>();
