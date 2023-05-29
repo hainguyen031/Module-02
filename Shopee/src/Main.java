@@ -18,7 +18,7 @@ public class Main {
             System.out.println("1. Category");
             System.out.println("2. Show Cart");
             System.out.println("3. Edit Cart");
-            System.out.println("4. Buy");
+            System.out.println("4. Buy"); //chua xong
             System.out.println("5. Exit");
             System.out.println("---------------------");
             int choice = choosingOption();
