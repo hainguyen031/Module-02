@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Lesson-09-TDD.iml" filepath="$PROJECT_DIR$/.idea/Lesson-09-TDD.iml" />
+      <module fileurl="file://$PROJECT_DIR$/NextDayCalculator/NextDayCalculator.iml" filepath="$PROJECT_DIR$/NextDayCalculator/NextDayCalculator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TH-Test-SimpleCalculator/TH-Test-SimpleCalculator.iml" filepath="$PROJECT_DIR$/TH-Test-SimpleCalculator/TH-Test-SimpleCalculator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TH-absolute-number-calculator/TH-absolute-number-calculator.iml" filepath="$PROJECT_DIR$/TH-absolute-number-calculator/TH-absolute-number-calculator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test-FizzBuzz/test-FizzBuzz.iml" filepath="$PROJECT_DIR$/test-FizzBuzz/test-FizzBuzz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test-triangle/test-triangle.iml" filepath="$PROJECT_DIR$/test-triangle/test-triangle.iml" />
+    </modules>
+  </component>
+</project>
