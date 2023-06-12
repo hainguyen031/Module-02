@@ -21,7 +21,7 @@ public class CarService {
         carList.add(new Car(2,"Toyota", "Vios", 4, 700000));
         carList.add(new Car(3,"Mitsubishi", "Xpander", 7, 900000));
         carList.add(new Car(4,"MG", "MG5", 4, 600000));
-        carList.add(new Car(5,"Toyota", "Fortuner", 7, 700000));
+        carList.add(new Car(5,"Huyndai", "Accent", 4, 650000));
     }
 
     public static List<Car> getCarList() {

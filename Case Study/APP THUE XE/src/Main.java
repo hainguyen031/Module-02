@@ -1,5 +1,6 @@
 import entity.Staff;
 import entity.User;
+import service.CarFactory;
 import service.CarService;
 
 import javax.swing.plaf.synth.SynthOptionPaneUI;
@@ -24,7 +25,7 @@ public class Main {
                     CarService.showList();
                     break;
                 case 3:
-
+                    CarFactory.searchCar("seat");
                     break;
                 case 4:
 
