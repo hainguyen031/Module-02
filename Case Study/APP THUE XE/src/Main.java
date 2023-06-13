@@ -1,9 +1,8 @@
-import java.util.Scanner;
+import view.BeginView;
 
 public class Main {
-    static Scanner scanner = new Scanner(System.in);
-
     public static void main(String[] args) {
+        BeginView.getInstance().runBeginMenu();
     }
 
 

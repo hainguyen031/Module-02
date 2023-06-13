@@ -9,10 +9,10 @@ public class User {
     static Scanner scanner = new Scanner(System.in);
     private static int idCount = 0;
     private int id;
-    private String username;
-    private String password;
-    private String phone;
-    private String email;
+    protected String username;
+    protected String password;
+    protected String phone;
+    protected String email;
     public User() {
     }
     public User(String username, String password, String phone, String email) {

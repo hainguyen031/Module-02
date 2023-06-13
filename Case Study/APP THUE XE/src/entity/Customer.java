@@ -53,4 +53,7 @@ public class Customer extends User {
     public void setGplx(String gplx) {
         this.gplx = gplx;
     }
+    public String[] toArray() {
+        return new String[] {username, password, name, phone, email, String.valueOf(cccd), gplx};
+    }
 }

@@ -2,7 +2,9 @@ package service;
 
 import entity.Staff;
 import entity.User;
+import service.File.UserFileService;
 
+import javax.swing.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +12,7 @@ import java.util.List;
 public class UserService {
     private static UserService userService = new UserService();
     static List<User> userList;
+    private User currentUser;
 
     private final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
@@ -31,6 +34,32 @@ public class UserService {
 
     public void addNewUser(User newUser) {
         userList.add(newUser);
+        UserFileService.getInstance().writeUserList();
+    }
+
+    public boolean checkUsername(String inputUsername) {  //null point
+        for (User user : userList) {
+            if(user.getUsername().equals(inputUsername)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean checkPassword(String inputPassword) {  //null point
+        for (User user : userList) {
+            if (user.getPassword().equals(inputPassword)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public User getCurrentUser() {
+        return currentUser;
+    }
+    public void setCurrentUser(User currentUser) {
+        this.currentUser = currentUser;
     }
 
 //    public static boolean register(User user) {

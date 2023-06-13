@@ -1,5 +1,6 @@
 package view;
 
+import builder.CustomerBuilder;
 import entity.User;
 import service.InputService;
 import service.UserService;
@@ -20,6 +21,7 @@ public class RegisterView {
     public void displayRegisterMenu() {
         System.out.println("-----REGISTER-----");
         String username = InputService.getInstance().inputInfo("username");
+        String password = InputService.getInstance().inputInfo("password");
         String email = "";
         boolean isExist = true;
         while (isExist) {
@@ -33,8 +35,11 @@ public class RegisterView {
             }
         }
         String phone = InputService.getInstance().inputInfo("phone");
-        String password = InputService.getInstance().inputInfo("password");
-        User newUser = new User(password, username, phone, email);
+        User newUser = CustomerBuilder.getInstance()
+                .username(username)
+                .password(password)
+                .email(email)
+                .phone(phone);
         UserService.getInstance().addNewUser(newUser);
 
     }
