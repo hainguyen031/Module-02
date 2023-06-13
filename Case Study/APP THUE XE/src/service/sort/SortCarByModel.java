@@ -1,4 +1,6 @@
-package entity;
+package service.sort;
+
+import entity.Car;
 
 import java.util.Comparator;
 

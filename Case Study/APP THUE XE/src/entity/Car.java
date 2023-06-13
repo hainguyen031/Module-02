@@ -2,7 +2,7 @@ package entity;
 
 public class Car {
     private int id;
-    private int countId = 0;
+    private static int countId = 1;
     private String brand;
     private String model;
     private int seats;
@@ -13,7 +13,7 @@ public class Car {
     }
 
     public Car(String brand, String model, int seats, int rentPrice) {
-
+        this.id = countId++;
         this.brand = brand;
         this.model = model;
         this.seats = seats;

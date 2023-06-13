@@ -11,9 +11,16 @@ public class User {
     private int id;
     private String username;
     private String password;
+    private String phone;
+    private String email;
     public User() {
-        idCount++;
-        this.id = idCount;
+    }
+    public User(String username, String password, String phone, String email) {
+        this.id = idCount++;
+        this.username = username;
+        this.password = password;
+        this.phone = phone;
+        this.email = email;
     }
     public User(int id, String username, String password) {
         this.id = id;
@@ -43,40 +50,28 @@ public class User {
         return password;
     }
 
+    public String getPhone() {
+        return phone;
+    }
 
-    public void register() {
-        System.out.println("REGISTER");
-        System.out.println("Input username: ");
-        username = scanner.nextLine();
-        System.out.println("Input password: ");
-        password = scanner.nextLine();
-        User user = new User(username, password);
-        boolean success = UserService.register(user);
-        if (success) {
-            System.out.println("Register successful");
-        } else {
-            System.out.println("Register failed");
-        }
+    public void setUsername(String username) {
+        this.username = username;
     }
-    public void login() {
-        System.out.println("LOGIN");
-        System.out.println("Input username:");
-        username = scanner.nextLine();
-        System.out.println("Input password: ");
-        password = scanner.nextLine();
-        boolean success = UserService.login(username, password);
-        if (success) {
-            System.out.println("Login successful");
-        } else {
-            System.out.println("Login failed");
-        }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 }
