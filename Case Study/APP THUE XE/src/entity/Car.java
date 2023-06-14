@@ -7,18 +7,18 @@ public class Car {
     private String model;
     private int seats;
     private int rentPrice;
-    private boolean available;
+    private boolean available = true;
 
     public Car() {
     }
 
-    public Car(String brand, String model, int seats, int rentPrice) {
+    public Car(String brand, String model, int seats, int rentPrice, boolean available) {
         this.id = countId++;
         this.brand = brand;
         this.model = model;
         this.seats = seats;
         this.rentPrice = rentPrice;
-        this.available = true;
+        this.available = available;
     }
 
     public Car(int id, String brand, String model, int seats, int rentPrice) {

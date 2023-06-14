@@ -1,14 +1,15 @@
 package builder;
 
+import entity.Customer;
 import entity.User;
 
-public class CustomerBuilder extends User implements InterfaceCustomerBuilder{
+public class CustomerBuilder implements InterfaceCustomerBuilder{
     protected String username;
     protected String password;
     protected String email;
     protected String phone;
     protected String name;
-    protected int cccd;
+    protected String cccd;
     private String gplx;
     private static final CustomerBuilder customerBuilder = new CustomerBuilder();
     private CustomerBuilder() {}
@@ -34,7 +35,7 @@ public class CustomerBuilder extends User implements InterfaceCustomerBuilder{
     }
 
     @Override
-    public CustomerBuilder phone(String phone) {
+    public InterfaceCustomerBuilder phone(String phone) {
         this.phone = phone;
         return this;
     }
@@ -46,7 +47,7 @@ public class CustomerBuilder extends User implements InterfaceCustomerBuilder{
     }
 
     @Override
-    public InterfaceCustomerBuilder cccd(int cccd) {
+    public InterfaceCustomerBuilder cccd(String cccd) {
         this.cccd = cccd;
         return this;
     }
@@ -55,5 +56,10 @@ public class CustomerBuilder extends User implements InterfaceCustomerBuilder{
     public InterfaceCustomerBuilder gplx(String gplx) {
         this.gplx = gplx;
         return this;
+    }
+
+    @Override
+    public Customer build() {
+        return new Customer(username, password, phone, email, name, cccd, gplx);
     }
 }

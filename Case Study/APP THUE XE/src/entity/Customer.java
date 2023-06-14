@@ -2,27 +2,28 @@ package entity;
 
 public class Customer extends User {
     private String name;
-    private int cccd;
+    private String cccd;
     private String gplx;
+
 
     public Customer() {
     }
 
-    public Customer(String name, int cccd, String gplx) {
+    public Customer(String name, String cccd, String gplx) {
         this.name = name;
         this.cccd = cccd;
         this.gplx = gplx;
     }
 
-    public Customer(int id, String username, String password, String name, int cccd, String gplx) {
+    public Customer(int id, String username, String password, String name, String cccd, String gplx) {
         super(id, username, password);
         this.name = name;
         this.cccd = cccd;
         this.gplx = gplx;
     }
 
-    public Customer(String username, String password, String name, int cccd, String gplx) {
-        super(username, password);
+    public Customer(String username, String password, String phone, String email, String name, String cccd, String gplx) {
+        super(username, password, phone, email);
         this.name = name;
         this.cccd = cccd;
         this.gplx = gplx;
@@ -38,11 +39,11 @@ public class Customer extends User {
         this.name = name;
     }
 
-    public int getCccd() {
+    public String getCccd() {
         return cccd;
     }
 
-    public void setCccd(int cccd) {
+    public void setCccd(String cccd) {
         this.cccd = cccd;
     }
 

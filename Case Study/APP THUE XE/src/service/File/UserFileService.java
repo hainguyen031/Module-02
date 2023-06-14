@@ -3,16 +3,17 @@ package service.File;
 import builder.CustomerBuilder;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
+import com.opencsv.exceptions.CsvException;
 import com.opencsv.exceptions.CsvValidationException;
 import entity.Customer;
 import entity.User;
 import service.UserService;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 
 public class UserFileService {
@@ -75,7 +76,12 @@ public class UserFileService {
 
     public void writeUserList() {
         try {
-            CSVWriter csvWriter = new CSVWriter(new FileWriter(USER_FILEPATH));
+            FileWriter fileWriter = new FileWriter(new File(USER_FILEPATH));
+            CSVWriter csvWriter = new CSVWriter(fileWriter, CSVWriter.DEFAULT_SEPARATOR,
+                    CSVWriter.NO_QUOTE_CHARACTER,
+                    CSVWriter.DEFAULT_ESCAPE_CHARACTER,
+                    CSVWriter.DEFAULT_LINE_END);
+            List<User> userList = UserService.getInstance().getUserList();
             for (User user : UserService.getInstance().getUserList()) {  //null point
                 if (user.getUsername().equals("staff")) {
                     continue;
@@ -84,17 +90,58 @@ public class UserFileService {
                 csvWriter.writeNext(customerStringArray);
             }
             csvWriter.close();
-
-
+            fileWriter.close();
         } catch (IOException e) {
             System.err.println("Write file error");
             e.printStackTrace();
         } catch (NullPointerException e) {
-            e.printStackTrace();
+            System.err.println("Null");
         }
     }
 
+//    public void readUserList() {
+//        try {
+//            CSVReader csvReader = new CSVReader(new FileReader(USER_FILEPATH));
+//            List<String[]> dataList = csvReader.readAll();
+//            for (String[] data : dataList) {
+//                System.out.println(Arrays.toString(data));
+//            }
+//            csvReader.close();
+//        } catch (IOException e) {
+//            System.err.println("Read file error");
+//            e.printStackTrace();
+//        } catch (CsvException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+
     public void readUserList() {
-        System.out.println("hello");
+        try {
+            FileReader fileReader = new FileReader(new File(USER_FILEPATH));
+            CSVReader csvReader = new CSVReader(fileReader);
+            String[] dataList;
+            List<User> userList = UserService.getInstance().getUserList();
+            while ((dataList = csvReader.readNext()) != null) {
+                if (dataList.length >= 2) {
+                    User newUser = CustomerBuilder.getInstance()
+                            .username(dataList[0])
+                            .password(dataList[1])
+                            .email(dataList[2])
+                            .phone(dataList[3])
+                            .name(dataList[4])
+                            .cccd(dataList[5])
+                            .gplx(dataList[6])
+                            .build();
+                    UserService.getInstance().getUserList().add(newUser);
+                }
+            }
+            csvReader.close();
+            fileReader.close();
+        } catch (IOException exception) {
+            System.err.println("Read file Error");
+            exception.printStackTrace();
+        } catch (CsvValidationException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

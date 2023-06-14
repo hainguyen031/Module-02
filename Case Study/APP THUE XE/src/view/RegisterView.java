@@ -22,6 +22,7 @@ public class RegisterView {
         System.out.println("-----REGISTER-----");
         String username = InputService.getInstance().inputInfo("username");
         String password = InputService.getInstance().inputInfo("password");
+        String name = InputService.getInstance().inputInfo("name");
         String email = "";
         boolean isExist = true;
         while (isExist) {
@@ -35,11 +36,19 @@ public class RegisterView {
             }
         }
         String phone = InputService.getInstance().inputInfo("phone");
+        String cccd = InputService.getInstance().inputInfo("cccd");
+        String gplx = InputService.getInstance().inputInfo("gplx");
         User newUser = CustomerBuilder.getInstance()
                 .username(username)
                 .password(password)
                 .email(email)
-                .phone(phone);
+                .phone(phone)
+                .name(name)
+                .cccd(cccd)
+                .gplx(gplx)
+                .build();
+
+//        User newUser = new User(username, password, email, phone);
         UserService.getInstance().addNewUser(newUser);
 
     }

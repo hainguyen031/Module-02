@@ -49,13 +49,14 @@ public class UserService {
     public boolean checkPassword(String inputPassword) {  //null point
         for (User user : userList) {
             if (user.getPassword().equals(inputPassword)) {
+                setCurrentUser(user);
                 return true;
             }
         }
         return false;
     }
 
-    public User getCurrentUser() {
+    public User getCurrentUser() { //null
         return currentUser;
     }
     public void setCurrentUser(User currentUser) {

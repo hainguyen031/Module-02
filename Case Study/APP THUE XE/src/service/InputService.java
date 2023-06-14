@@ -1,5 +1,7 @@
 package service;
 
+import builder.CarBuilder;
+import entity.Car;
 import entity.Customer;
 
 import java.util.ArrayList;
@@ -19,6 +21,8 @@ public class InputService {
     private final String MODEL_REGEX = "^[a-zA-Z0-9]+";
     private final String SEAT_REGEX = "^\\d[0-9]+";
     private final String PHONE_REGEX = "^\\d{10}$";
+    private final String CCCD_REGEX = "^\\d{12}$";
+    private final String GPLX_REGEX = "^\\d{12}$";
 
     public static InputService getInstance() {
         return inputService;
@@ -66,6 +70,12 @@ public class InputService {
             case "phone":
                 regex = PHONE_REGEX;
                 break;
+            case "cccd":
+                regex = CCCD_REGEX;
+                break;
+            case "gplx":
+                regex = GPLX_REGEX;
+                break;
         }
         Pattern pattern = Pattern.compile(regex);
         String text;
@@ -90,6 +100,26 @@ public class InputService {
     public int inputCarID() {
         System.out.println("Input the car ID:");
         return Integer.parseInt(scanner.nextLine());
+    }
+
+    public Car inputCarInfo() {
+        System.out.println("Input car brand: ");
+        String brand = scanner.nextLine();
+        System.out.println("Input car model: ");
+        String model = scanner.nextLine();
+        System.out.println("Input car seat: ");
+        int seat = Integer.parseInt(scanner.nextLine());
+        System.out.println("Input rental car: ");
+        int price =Integer.parseInt(scanner.nextLine());
+//        CarService.getInstance().addCarToList(new Car(brand, model, seat, price, true));
+        System.out.println("Add car successful !");
+        return CarBuilder.getInstance()
+                .brand(brand)
+                .model(model)
+                .seats(seat)
+                .rentPrice(price)
+                .available(true)
+                .build();
     }
 
     // -------------chua xong------------

@@ -1,5 +1,6 @@
 package view;
 
+import service.File.UserFileService;
 import service.InputService;
 import service.CarService;
 
@@ -25,12 +26,12 @@ public class CustomerView {
         System.out.println("6. Down payment");
         System.out.println("7. History");
         System.out.println("8. Invoice");
-        System.out.println("0. Logout");
+        System.out.println("9. Logout");
     }
 
     public void runCustomerView() {
         int choice = 0;
-        while (choice != 0) {
+        while (choice != 9) {
             displayCustomerView();
             choice = InputService.getInstance().inputChoice();
 
@@ -59,8 +60,9 @@ public class CustomerView {
                 case 8:
 
                     break;
-                case 0:
-                    System.out.println("Exited !");
+                case 9:
+                    System.out.println("Logout successfully !");
+                    UserFileService.getInstance().writeUserList();
 //                    exit = true;
                     break;
             }
